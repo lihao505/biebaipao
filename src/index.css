@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  body {
+    @apply bg-gray-50 text-gray-900;
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-white rounded-2xl border border-gray-200 shadow-sm;
+  }
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-brand-600 text-white font-medium transition-all active:scale-95 hover:bg-brand-700;
+  }
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-white text-brand-600 font-medium border border-brand-200 transition-all active:scale-95 hover:bg-brand-50;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg text-gray-600 font-medium transition-all active:scale-95 hover:bg-gray-100;
+  }
+  .section-title {
+    @apply text-2xl font-bold text-gray-900 tracking-tight;
+  }
+  .section-desc {
+    @apply text-sm text-gray-500 leading-relaxed;
+  }
+  .label-tag {
+    @apply inline-block px-2.5 py-1 rounded-md text-xs font-medium;
+  }
+}
+
+/* Smooth page transitions */
+.page-enter {
+  animation: pageEnter 0.3s ease-out;
+}
+
+@keyframes pageEnter {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Checkbox custom style */
+input[type="checkbox"] {
+  accent-color: #2563eb;
+}
+
+/* Hide scrollbar but keep functionality */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
