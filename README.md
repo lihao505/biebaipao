@@ -1,6 +1,8 @@
 # 别白跑 — AI 线下办事教练
 
 > TRAE AI 创造力大赛参赛项目 · 纯前端 Mock Demo
+> 
+> 🔗 **在线体验：https://lihao505.github.io/biebaipao**
 
 帮助用户在出门办事前确认材料、排查缺失、查看流程，减少线下办事白跑率。
 
