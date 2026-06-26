@@ -1,4 +1,6 @@
 import type { Material } from '../types';
+import AppButton from './ui/AppButton';
+import PillChip from './ui/PillChip';
 
 interface MaterialItemProps {
   material: Material;
@@ -8,18 +10,28 @@ interface MaterialItemProps {
 }
 
 export default function MaterialItem({ material, checked, onToggle, onShowGuide }: MaterialItemProps) {
+  const missingRequired = material.required && !checked;
+
   return (
-    <div className={`rounded-xl border transition-all ${checked ? 'border-green-200 bg-green-50/50' : 'border-gray-200 bg-white'}`}>
+    <div className={`lift-card rounded-3xl border transition-all ${
+      checked
+        ? 'border-[#34c759]/25 bg-[#ecfff3]/80'
+        : missingRequired
+        ? 'breath-warn border-[#ff9f0a]/45 bg-[#fffaf0]/90'
+        : 'border-white/80 bg-white/[0.82]'
+    }`}>
       <div className="flex items-start gap-3 p-3.5">
         <button
           onClick={onToggle}
           className="mt-0.5 flex-shrink-0"
           aria-label={checked ? '取消勾选' : '勾选'}
         >
-          <div className={`w-6 h-6 rounded-lg border-2 flex items-center justify-center transition-all ${
+          <div className={`flex h-7 w-7 items-center justify-center rounded-xl border-2 transition-all active:scale-90 ${
             checked
-              ? 'bg-green-500 border-green-500'
-              : 'border-gray-300 hover:border-brand-400'
+              ? 'border-[#34c759] bg-[#34c759] shadow-[0_8px_18px_rgba(52,199,89,0.24)] check-pop'
+              : missingRequired
+              ? 'border-[#ff9f0a] bg-white'
+              : 'border-[#d2d2d7] bg-white hover:border-[#0071e3]'
           }`}>
             {checked && (
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
@@ -30,25 +42,29 @@ export default function MaterialItem({ material, checked, onToggle, onShowGuide 
         </button>
 
         <div className="flex-1 min-w-0">
-          <div className="flex items-center gap-2 flex-wrap">
-            <span className={`font-medium ${checked ? 'text-gray-500 line-through' : 'text-gray-900'}`}>
+          <div className="flex items-center gap-2 flex-wrap pr-1">
+            <span className={`font-semibold ${checked ? 'text-[#86868b] line-through' : 'text-[#1d1d1f]'}`}>
               {material.name}
             </span>
             {material.required ? (
-              <span className="label-tag bg-red-50 text-red-600">必备</span>
+              <PillChip tone="danger">必备</PillChip>
             ) : (
-              <span className="label-tag bg-gray-100 text-gray-500">选备</span>
+              <PillChip tone="default">选备</PillChip>
             )}
+            {checked && <PillChip tone="success">已准备</PillChip>}
+            {missingRequired && <PillChip tone="warning">缺失</PillChip>}
           </div>
-          <p className="text-sm text-gray-500 mt-0.5">{material.description}</p>
+          <p className="mt-1 text-sm leading-relaxed text-[#6e6e73]">{material.description}</p>
         </div>
 
-        <button
+        <AppButton
+          variant={missingRequired ? 'warning' : 'secondary'}
+          size="sm"
           onClick={onShowGuide}
-          className="flex-shrink-0 text-brand-600 text-sm font-medium hover:text-brand-700 transition-colors"
+          className="mt-0.5 flex-shrink-0 self-start"
         >
-          补全教程
-        </button>
+          补全
+        </AppButton>
       </div>
     </div>
   );

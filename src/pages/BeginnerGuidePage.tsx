@@ -1,14 +1,17 @@
-import { useParams, useNavigate } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useParams, useNavigate, useSearchParams } from 'react-router-dom';
+import { useEffect, useRef } from 'react';
+import { ArrowRight } from 'lucide-react';
 import Layout from '../components/Layout';
 import { getScenarioById } from '../data/scenarios';
 import { useApp } from '../context/AppContext';
 
 export default function BeginnerGuidePage() {
   const { scenarioId } = useParams<{ scenarioId: string }>();
+  const [searchParams] = useSearchParams();
   const navigate = useNavigate();
-  const { setSelectedScenarioId, resetMaterialChecks } = useApp();
+  const { setSelectedScenarioId, resetMaterialChecks, createTask, showToast } = useApp();
   const scenario = scenarioId ? getScenarioById(scenarioId) : undefined;
+  const hasAutoStarted = useRef(false);
 
   useEffect(() => {
     if (scenarioId) {
@@ -16,6 +19,27 @@ export default function BeginnerGuidePage() {
       resetMaterialChecks();
     }
   }, [scenarioId, setSelectedScenarioId, resetMaterialChecks]);
+
+  // Auto-start task when ?action=start is present (guarded against StrictMode double-execution)
+  useEffect(() => {
+    if (searchParams.get('action') === 'start' && scenarioId && !hasAutoStarted.current) {
+      hasAutoStarted.current = true;
+      const taskId = createTask(scenarioId);
+      if (taskId) {
+        showToast('任务已创建，开始检查材料', 'success');
+        navigate(`/task/${taskId}`, { replace: true });
+      }
+    }
+  }, [searchParams, scenarioId, createTask, showToast, navigate]);
+
+  const handleStartTask = () => {
+    if (!scenarioId) return;
+    const taskId = createTask(scenarioId);
+    if (taskId) {
+      showToast('任务已创建，开始检查材料', 'success');
+      navigate(`/task/${taskId}`);
+    }
+  };
 
   if (!scenario) {
     return (
@@ -111,13 +135,11 @@ export default function BeginnerGuidePage() {
 
       {/* CTA */}
       <button
-        onClick={() => navigate(`/materials/${scenario.id}`)}
+        onClick={handleStartTask}
         className="btn-primary w-full"
       >
-        查看材料清单
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M5 12h14M12 5l7 7-7 7" />
-        </svg>
+        开始办事检查
+        <ArrowRight size={20} />
       </button>
     </Layout>
   );

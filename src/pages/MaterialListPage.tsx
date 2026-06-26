@@ -34,8 +34,9 @@ export default function MaterialListPage() {
   return (
     <Layout>
       <div className="mb-5">
-        <h2 className="section-title">材料清单</h2>
-        <p className="section-desc mt-1">勾选已准备的材料，查看白跑风险</p>
+        <p className="text-sm font-semibold text-[#0071e3]">材料预检</p>
+        <h2 className="section-title mt-1">出门前准备状态</h2>
+        <p className="section-desc mt-2">勾选已准备的材料，系统会实时更新白跑风险。</p>
       </div>
 
       {/* Summary card */}
@@ -44,7 +45,7 @@ export default function MaterialListPage() {
       </div>
 
       {/* Material list */}
-      <div className="space-y-2.5 mb-6">
+      <div className="mb-6 space-y-2.5">
         {scenario.materials.map((material) => (
           <MaterialItem
             key={material.id}
@@ -74,10 +75,10 @@ export default function MaterialListPage() {
           官方信息 & 电话
         </button>
         <button
-          onClick={() => navigate(`/onsite/${scenario.id}`)}
+          onClick={() => navigate(`/coach/${scenario.id}`)}
           className="btn-ghost w-full"
         >
-          现场提问模拟
+          AI 现场教练
         </button>
       </div>
     </Layout>

@@ -1,4 +1,4 @@
-import { getRiskLabel, getRiskColor, getRiskDescription } from '../utils/riskCalculator';
+import { getRiskLabel, getRiskColor, getRiskDescription } from '../lib/riskEngine';
 import type { RiskLevel } from '../types';
 
 export default function RiskBadge({ level, size = 'md' }: { level: RiskLevel; size?: 'sm' | 'md' }) {

@@ -72,10 +72,10 @@ export default function ProcessFlowPage() {
           </svg>
         </button>
         <button
-          onClick={() => navigate(`/onsite/${scenario.id}`)}
+          onClick={() => navigate(`/coach/${scenario.id}`)}
           className="btn-secondary w-full"
         >
-          现场提问模拟
+          AI 现场教练
         </button>
       </div>
     </Layout>

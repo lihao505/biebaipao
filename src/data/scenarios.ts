@@ -110,12 +110,12 @@ export const scenarios: Scenario[] = [
       '部分章需要院长签字，流程更长',
     ],
     officialLinks: [
-      { name: '学校教务管理系统', url: 'https://jwxt.example.edu.cn', description: '提交成绩单打印申请、查询办理进度' },
-      { name: '网上办事大厅', url: 'https://ehall.example.edu.cn', description: '部分业务支持线上申请' },
+      { name: '学校教务管理系统', url: '#', description: '提交成绩单打印申请、查询办理进度' },
+      { name: '网上办事大厅', url: '#', description: '部分业务支持线上申请' },
     ],
     phones: [
-      { name: '教务处咨询电话', number: '0571-XXXX0001', description: '工作日 9:00-17:00' },
-      { name: '院系教务办公室', number: '0571-XXXX0002', description: '确认签字时间' },
+      { name: '教务处咨询电话', number: '请以当地官方渠道为准', description: '工作日 9:00-17:00' },
+      { name: '院系教务办公室', number: '请以当地官方渠道为准', description: '确认签字时间' },
     ],
     scripts: [
       { scenario: '到教务处不知道怎么取号', content: '老师你好，我是XX学院的学生，需要办理成绩单盖章，请问是在这里取号吗？需要哪些材料？' },
@@ -235,12 +235,12 @@ export const scenarios: Scenario[] = [
       '上午人比下午多，建议下午复诊',
     ],
     officialLinks: [
-      { name: '医院公众号', url: 'https://mp.weixin.qq.com/example-hospital', description: '预约挂号、查看报告、缴费' },
-      { name: '医院官网', url: 'https://www.example-hospital.com', description: '科室介绍、就诊指南' },
+      { name: '医院公众号', url: '#', description: '预约挂号、查看报告、缴费' },
+      { name: '医院官网', url: '#', description: '科室介绍、就诊指南' },
     ],
     phones: [
-      { name: '医院咨询电话', number: '0571-XXXX0003', description: '工作日 8:00-17:00' },
-      { name: '门诊服务台', number: '0571-XXXX0004', description: '现场引导和咨询' },
+      { name: '医院咨询电话', number: '请以当地官方渠道为准', description: '工作日 8:00-17:00' },
+      { name: '门诊服务台', number: '请以当地官方渠道为准', description: '现场引导和咨询' },
     ],
     scripts: [
       { scenario: '不知道科室在哪层', content: '护士你好，我挂了XX科的复诊号，请问在几楼？怎么走？' },
@@ -358,12 +358,12 @@ export const scenarios: Scenario[] = [
       '新卡可能有交易限额，需逐步提升',
     ],
     officialLinks: [
-      { name: '银行官网', url: 'https://www.example-bank.com', description: '网点查询、业务预约' },
-      { name: '手机银行 App', url: 'https://app.example-bank.com', description: '部分业务可线上办理' },
+      { name: '银行官网', url: '#', description: '网点查询、业务预约' },
+      { name: '手机银行 App', url: '#', description: '部分业务可线上办理' },
     ],
     phones: [
-      { name: '银行客服热线', number: '9XXXX', description: '24 小时服务' },
-      { name: '网点咨询电话', number: '0571-XXXX0005', description: '工作日 9:00-17:00' },
+      { name: '银行客服热线', number: '请以当地官方渠道为准', description: '24 小时服务' },
+      { name: '网点咨询电话', number: '请以当地官方渠道为准', description: '工作日 9:00-17:00' },
     ],
     scripts: [
       { scenario: '大堂取号', content: '你好，我想办理银行卡开户/解冻业务，请问需要哪些材料？取什么号？' },
@@ -591,12 +591,12 @@ export const scenarios: Scenario[] = [
       '12345 政务服务热线可咨询具体要求',
     ],
     officialLinks: [
-      { name: '政务服务网', url: 'https://www.govservice.example.gov.cn', description: '在线预约、下载申请表、查询办理进度' },
-      { name: '政务小程序', url: 'https://miniapp.example.gov.cn', description: '手机预约、取号、查询' },
+      { name: '政务服务网', url: '#', description: '在线预约、下载申请表、查询办理进度' },
+      { name: '政务小程序', url: '#', description: '手机预约、取号、查询' },
     ],
     phones: [
       { name: '12345 政务服务热线', number: '12345', description: '24 小时政务服务咨询' },
-      { name: '政务大厅咨询电话', number: '0571-XXXX0006', description: '工作日 9:00-17:00' },
+      { name: '政务大厅咨询电话', number: '请以当地官方渠道为准', description: '工作日 9:00-17:00' },
     ],
     scripts: [
       { scenario: '到咨询台确认材料', content: '你好，我想办理身份证补办，这是我的材料，麻烦帮我看一下是否齐全？' },
@@ -713,11 +713,11 @@ export const scenarios: Scenario[] = [
       '入住和退租都要拍照留存房屋状况',
     ],
     officialLinks: [
-      { name: '住建局租赁备案平台', url: 'https://zulin.example.gov.cn', description: '租赁合同备案、标准模板下载' },
-      { name: '租房服务平台', url: 'https://zf.example.gov.cn', description: '官方租房信息平台' },
+      { name: '住建局租赁备案平台', url: '#', description: '租赁合同备案、标准模板下载' },
+      { name: '租房服务平台', url: '#', description: '官方租房信息平台' },
     ],
     phones: [
-      { name: '住建局咨询', number: '0571-XXXX0007', description: '工作日 9:00-17:00' },
+      { name: '住建局咨询', number: '请以当地官方渠道为准', description: '工作日 9:00-17:00' },
       { name: '消费者投诉', number: '12315', description: '租房纠纷投诉' },
     ],
     scripts: [

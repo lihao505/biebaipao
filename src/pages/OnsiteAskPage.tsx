@@ -118,10 +118,10 @@ export default function OnsiteAskPage() {
         </p>
       </div>
 
-      {/* Mock notice */}
-      <div className="rounded-xl bg-amber-50 border border-amber-100 p-3 mb-5">
-        <p className="text-xs text-amber-700 leading-relaxed">
-          本页面为 Mock 演示，基于关键词匹配返回预设回答。实际产品将接入 AI 模型，提供更精准的现场指导。
+      {/* Info notice */}
+      <div className="rounded-xl bg-blue-50 border border-blue-100 p-3 mb-5">
+        <p className="text-xs text-blue-700 leading-relaxed">
+          当前为本地规则引擎模式，基于场景上下文返回建议。已预留 LLM/RAG 接口，后续将接入 AI 模型提供更精准的现场指导。
         </p>
       </div>
 
