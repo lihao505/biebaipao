@@ -24,6 +24,10 @@ import { useApp } from '../context/AppContext';
 import AppButton from '../components/ui/AppButton';
 import PillChip from '../components/ui/PillChip';
 import SearchField from '../components/ui/SearchField';
+import { motion } from 'motion/react';
+import { spring } from '../lib/motion';
+import AnimatedList from '../components/AnimatedList';
+import AnimatedCard from '../components/AnimatedCard';
 
 // ===== Confidence display config =====
 const confidenceConfig: Record<
@@ -328,7 +332,7 @@ export default function OfficialInfoPage() {
           <ExternalLink size={20} className="text-[#0071e3]" />
           官方链接
         </h3>
-        <div className="space-y-3">
+        <AnimatedList className="space-y-3">
           {scenario.officialLinks.map((link, idx) => {
             const isExample = link.url === '#';
             const content = (
@@ -350,24 +354,27 @@ export default function OfficialInfoPage() {
             );
             if (isExample) {
               return (
-                <div key={idx} className="card p-4 opacity-90">
+                <AnimatedCard key={idx} className="card p-4 opacity-90">
                   {content}
-                </div>
+                </AnimatedCard>
               );
             }
             return (
-              <a
-                key={idx}
-                href={link.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="card block p-4 transition-all hover:border-[#0071e3]/30 active:scale-[0.98]"
-              >
-                {content}
-              </a>
+              <AnimatedCard key={idx}>
+                <motion.a
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="card block p-4 transition-all hover:border-[#0071e3]/30"
+                  whileTap={{ scale: 0.97 }}
+                  transition={spring}
+                >
+                  {content}
+                </motion.a>
+              </AnimatedCard>
             );
           })}
-        </div>
+        </AnimatedList>
       </section>
 
       {/* ===== Phones ===== */}
@@ -376,11 +383,11 @@ export default function OfficialInfoPage() {
           <Phone size={20} className="text-[#0071e3]" />
           咨询电话
         </h3>
-        <div className="space-y-3">
+        <AnimatedList className="space-y-3">
           {scenario.phones.map((phone, idx) => {
             const isPlaceholder = phone.number.includes('当地');
             return (
-              <div key={idx} className="card p-4">
+              <AnimatedCard key={idx} className="card p-4">
                 <div className="flex items-center justify-between">
                   <div>
                     <h4 className="text-sm font-medium text-[#1d1d1f]">{phone.name}</h4>
@@ -401,10 +408,10 @@ export default function OfficialInfoPage() {
                     </a>
                   )}
                 </div>
-              </div>
+              </AnimatedCard>
             );
           })}
-        </div>
+        </AnimatedList>
       </section>
 
       {/* ===== 12345 Hotline Tip ===== */}

@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { ArrowRight, Bot, ClipboardList, Clock, MapPin, Plus, Sparkles, Star, Settings, Compass } from 'lucide-react';
 import Layout from '../components/Layout';
 import RiskBadge from '../components/RiskBadge';
+import PressableCard from '../components/PressableCard';
+import GlassPanel from '../components/GlassPanel';
 import { useApp } from '../context/AppContext';
 import { scenarios } from '../data/scenarios';
 import type { Task } from '../types/task';
@@ -202,79 +204,83 @@ export default function HomePage() {
 
 function CurrentTaskCard({ task, onContinue }: { task: Task; onContinue: () => void }) {
   return (
-    <div className="glass-panel relative overflow-hidden rounded-[28px] p-5">
-      <div className="absolute -right-12 -top-12 h-36 w-36 rounded-full bg-[#0071e3]/12 blur-3xl" />
-      <div className="relative z-10">
-        <div className="flex items-center gap-2">
-          <span className="label-tag bg-[#0071e3]/10 text-[#0071e3]">当前任务</span>
-          <RiskBadge level={task.riskLevel} size="sm" />
-        </div>
-
-        <div className="mt-3 flex items-start gap-3">
-          <div className="grid h-12 w-12 flex-shrink-0 place-items-center rounded-2xl bg-white/80 text-2xl shadow-sm">
-            {task.scenarioIcon}
+    <PressableCard>
+      <GlassPanel className="relative overflow-hidden rounded-[28px] p-5" intensity="strong">
+        <div className="absolute -right-12 -top-12 h-36 w-36 rounded-full bg-[#0071e3]/12 blur-3xl" />
+        <div className="relative z-10">
+          <div className="flex items-center gap-2">
+            <span className="label-tag bg-[#0071e3]/10 text-[#0071e3]">当前任务</span>
+            <RiskBadge level={task.riskLevel} size="sm" />
           </div>
-          <div className="min-w-0 flex-1">
-            <h3 className="text-lg font-semibold tracking-tight text-[#1d1d1f]">{task.title}</h3>
-            <p className="mt-0.5 text-xs text-[#86868b]">{task.scenarioName}</p>
-          </div>
-        </div>
 
-        <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1.5 text-xs text-[#6e6e73]">
-          <span className="inline-flex items-center gap-1">
-            <MapPin size={13} /> {task.location}
-          </span>
-          <span className="inline-flex items-center gap-1">
-            <Clock size={13} /> {task.estimatedTime}
-          </span>
-        </div>
-
-        {/* Mini risk indicator */}
-        <div className="mt-4">
-          <div className="flex items-center justify-between text-xs">
-            <span className="font-medium text-[#6e6e73]">材料完整度</span>
-            <span className="font-semibold text-[#1d1d1f]">{task.completeness}%</span>
+          <div className="mt-3 flex items-start gap-3">
+            <div className="grid h-12 w-12 flex-shrink-0 place-items-center rounded-2xl bg-white/80 text-2xl shadow-sm">
+              {task.scenarioIcon}
+            </div>
+            <div className="min-w-0 flex-1">
+              <h3 className="text-lg font-semibold tracking-tight text-[#1d1d1f]">{task.title}</h3>
+              <p className="mt-0.5 text-xs text-[#86868b]">{task.scenarioName}</p>
+            </div>
           </div>
-          <div className="mt-1.5 h-2 overflow-hidden rounded-full bg-[#f0f0f2]">
-            <div
-              className="h-full rounded-full transition-all duration-500"
-              style={{
-                width: `${task.completeness}%`,
-                backgroundColor: riskTone(task.riskLevel),
-              }}
-            />
-          </div>
-        </div>
 
-        <button onClick={onContinue} className="btn-primary mt-5 w-full">
-          继续准备
-          <ArrowRight size={18} />
-        </button>
-      </div>
-    </div>
+          <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1.5 text-xs text-[#6e6e73]">
+            <span className="inline-flex items-center gap-1">
+              <MapPin size={13} /> {task.location}
+            </span>
+            <span className="inline-flex items-center gap-1">
+              <Clock size={13} /> {task.estimatedTime}
+            </span>
+          </div>
+
+          {/* Mini risk indicator */}
+          <div className="mt-4">
+            <div className="flex items-center justify-between text-xs">
+              <span className="font-medium text-[#6e6e73]">材料完整度</span>
+              <span className="font-semibold text-[#1d1d1f]">{task.completeness}%</span>
+            </div>
+            <div className="mt-1.5 h-2 overflow-hidden rounded-full bg-[#f0f0f2]">
+              <div
+                className="h-full rounded-full transition-all duration-500"
+                style={{
+                  width: `${task.completeness}%`,
+                  backgroundColor: riskTone(task.riskLevel),
+                }}
+              />
+            </div>
+          </div>
+
+          <button onClick={onContinue} className="btn-primary mt-5 w-full">
+            继续准备
+            <ArrowRight size={18} />
+          </button>
+        </div>
+      </GlassPanel>
+    </PressableCard>
   );
 }
 
 function EmptyHero({ onStart }: { onStart: () => void }) {
   return (
-    <div className="glass-panel relative overflow-hidden rounded-[28px] p-6 text-center">
-      <div className="absolute -right-14 -top-14 h-40 w-40 rounded-full bg-[#0071e3]/15 blur-3xl" />
-      <div className="relative z-10 flex flex-col items-center">
-        <div className="grid h-16 w-16 place-items-center rounded-3xl bg-[#0071e3]/10 text-[#0071e3]">
-          <ClipboardList size={30} />
+    <PressableCard>
+      <GlassPanel className="relative overflow-hidden rounded-[28px] p-6 text-center" intensity="strong">
+        <div className="absolute -right-14 -top-14 h-40 w-40 rounded-full bg-[#0071e3]/15 blur-3xl" />
+        <div className="relative z-10 flex flex-col items-center">
+          <div className="grid h-16 w-16 place-items-center rounded-3xl bg-[#0071e3]/10 text-[#0071e3]">
+            <ClipboardList size={30} />
+          </div>
+          <h3 className="mt-4 text-xl font-semibold tracking-tight text-[#1d1d1f]">
+            还没有进行中的任务
+          </h3>
+          <p className="mt-2 max-w-xs text-sm leading-relaxed text-[#6e6e73]">
+            选一个办事场景，AI 帮你检查材料、估算风险，让出门不白跑。
+          </p>
+          <button onClick={onStart} className="btn-primary mt-5 w-full">
+            <Plus size={18} />
+            开始办事检查
+          </button>
         </div>
-        <h3 className="mt-4 text-xl font-semibold tracking-tight text-[#1d1d1f]">
-          还没有进行中的任务
-        </h3>
-        <p className="mt-2 max-w-xs text-sm leading-relaxed text-[#6e6e73]">
-          选一个办事场景，AI 帮你检查材料、估算风险，让出门不白跑。
-        </p>
-        <button onClick={onStart} className="btn-primary mt-5 w-full">
-          <Plus size={18} />
-          开始办事检查
-        </button>
-      </div>
-    </div>
+      </GlassPanel>
+    </PressableCard>
   );
 }
 

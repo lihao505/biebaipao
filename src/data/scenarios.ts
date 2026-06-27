@@ -110,12 +110,12 @@ export const scenarios: Scenario[] = [
       '部分章需要院长签字，流程更长',
     ],
     officialLinks: [
-      { name: '学校教务管理系统', url: '#', description: '提交成绩单打印申请、查询办理进度' },
-      { name: '网上办事大厅', url: '#', description: '部分业务支持线上申请' },
+      { name: '中国高等教育学生信息网（学信网）', url: 'https://www.chsi.com.cn/', description: '学籍学历查询、成绩单认证、学信档案' },
+      { name: '国家政务服务平台', url: 'https://gjzwfw.www.gov.cn/', description: '教育类事项通用入口，可查询当地办事指南' },
     ],
     phones: [
-      { name: '教务处咨询电话', number: '请以当地官方渠道为准', description: '工作日 9:00-17:00' },
-      { name: '院系教务办公室', number: '请以当地官方渠道为准', description: '确认签字时间' },
+      { name: '学信网客服', number: '010-67410388', description: '工作日 8:30-12:00, 13:00-17:00' },
+      { name: '全国12345政务服务热线', number: '12345', description: '咨询当地教育部门办事要求' },
     ],
     scripts: [
       { scenario: '到教务处不知道怎么取号', content: '老师你好，我是XX学院的学生，需要办理成绩单盖章，请问是在这里取号吗？需要哪些材料？' },
@@ -235,12 +235,12 @@ export const scenarios: Scenario[] = [
       '上午人比下午多，建议下午复诊',
     ],
     officialLinks: [
-      { name: '医院公众号', url: '#', description: '预约挂号、查看报告、缴费' },
-      { name: '医院官网', url: '#', description: '科室介绍、就诊指南' },
+      { name: '国家医保服务平台', url: 'https://fuwu.nhsa.gov.cn/', description: '医保电子凭证、异地就医备案、定点机构查询' },
+      { name: '国家卫生健康委', url: 'http://www.nhc.gov.cn/', description: '医疗机构查询、就诊指南、健康科普' },
     ],
     phones: [
-      { name: '医院咨询电话', number: '请以当地官方渠道为准', description: '工作日 8:00-17:00' },
-      { name: '门诊服务台', number: '请以当地官方渠道为准', description: '现场引导和咨询' },
+      { name: '全国医保服务热线', number: '12393', description: '医保政策咨询、24小时服务' },
+      { name: '全国12345政务服务热线', number: '12345', description: '咨询当地医院办事要求' },
     ],
     scripts: [
       { scenario: '不知道科室在哪层', content: '护士你好，我挂了XX科的复诊号，请问在几楼？怎么走？' },
@@ -358,12 +358,12 @@ export const scenarios: Scenario[] = [
       '新卡可能有交易限额，需逐步提升',
     ],
     officialLinks: [
-      { name: '银行官网', url: '#', description: '网点查询、业务预约' },
-      { name: '手机银行 App', url: '#', description: '部分业务可线上办理' },
+      { name: '国家金融监督管理总局', url: 'https://www.nfra.gov.cn/', description: '银行机构查询、金融消费权益保护' },
+      { name: '国家政务服务平台', url: 'https://gjzwfw.www.gov.cn/', description: '银行类业务通用入口，可查询当地网点' },
     ],
     phones: [
-      { name: '银行客服热线', number: '请以当地官方渠道为准', description: '24 小时服务' },
-      { name: '网点咨询电话', number: '请以当地官方渠道为准', description: '工作日 9:00-17:00' },
+      { name: '银行保险消费者投诉热线', number: '12378', description: '工作日 9:00-17:00' },
+      { name: '全国12345政务服务热线', number: '12345', description: '咨询当地银行网点办事要求' },
     ],
     scripts: [
       { scenario: '大堂取号', content: '你好，我想办理银行卡开户/解冻业务，请问需要哪些材料？取什么号？' },
@@ -591,8 +591,8 @@ export const scenarios: Scenario[] = [
       '12345 政务服务热线可咨询具体要求',
     ],
     officialLinks: [
-      { name: '政务服务网', url: '#', description: '在线预约、下载申请表、查询办理进度' },
-      { name: '政务小程序', url: '#', description: '手机预约、取号、查询' },
+      { name: '国家政务服务平台', url: 'https://gjzwfw.www.gov.cn/', description: '在线预约、下载申请表、查询办理进度' },
+      { name: '中国政府网', url: 'https://www.gov.cn/', description: '政策法规查询、政务公开、办事指南' },
     ],
     phones: [
       { name: '12345 政务服务热线', number: '12345', description: '24 小时政务服务咨询' },
@@ -713,8 +713,8 @@ export const scenarios: Scenario[] = [
       '入住和退租都要拍照留存房屋状况',
     ],
     officialLinks: [
-      { name: '住建局租赁备案平台', url: '#', description: '租赁合同备案、标准模板下载' },
-      { name: '租房服务平台', url: '#', description: '官方租房信息平台' },
+      { name: '住房和城乡建设部', url: 'https://www.mohurd.gov.cn/', description: '住房租赁政策、合同备案、标准模板下载' },
+      { name: '全国12315平台', url: 'https://www.12315.cn/', description: '租房纠纷投诉、消费者权益保护' },
     ],
     phones: [
       { name: '住建局咨询', number: '请以当地官方渠道为准', description: '工作日 9:00-17:00' },

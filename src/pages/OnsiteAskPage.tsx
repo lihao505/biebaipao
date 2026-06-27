@@ -3,6 +3,9 @@ import { useState } from 'react';
 import Layout from '../components/Layout';
 import { getScenarioById } from '../data/scenarios';
 import type { OnsiteQuestion } from '../types';
+import AnimatedList from '../components/AnimatedList';
+import AnimatedCard from '../components/AnimatedCard';
+import PressableCard from '../components/PressableCard';
 
 // Mock answer database - keyword matching
 const mockAnswers: { keywords: string[]; answer: OnsiteQuestion['answer'] }[] = [
@@ -166,71 +169,77 @@ export default function OnsiteAskPage() {
 
       {/* Result */}
       {result && (
-        <div className="space-y-4">
+        <AnimatedList className="space-y-4">
           {/* Question echo */}
-          <div className="flex justify-end">
-            <div className="max-w-[80%] px-4 py-2.5 rounded-2xl rounded-tr-md bg-brand-600 text-white text-sm">
-              {submittedQuestion}
+          <AnimatedCard>
+            <div className="flex justify-end">
+              <div className="max-w-[80%] px-4 py-2.5 rounded-2xl rounded-tr-md bg-brand-600 text-white text-sm">
+                {submittedQuestion}
+              </div>
             </div>
-          </div>
+          </AnimatedCard>
 
           {/* Answer */}
-          <div className="card p-5 space-y-4">
-            {/* Stage */}
-            <div>
-              <div className="flex items-center gap-2 mb-1.5">
-                <div className="w-6 h-6 rounded-lg bg-brand-100 flex items-center justify-center">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2563eb" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M12 2L2 7l10 5 10-5-10-5z" />
-                    <path d="M2 17l10 5 10-5" />
-                  </svg>
+          <AnimatedCard>
+            <PressableCard className="card p-5 space-y-4">
+              {/* Stage */}
+              <div>
+                <div className="flex items-center gap-2 mb-1.5">
+                  <div className="w-6 h-6 rounded-lg bg-brand-100 flex items-center justify-center">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2563eb" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M12 2L2 7l10 5 10-5-10-5z" />
+                      <path d="M2 17l10 5 10-5" />
+                    </svg>
+                  </div>
+                  <span className="text-xs font-medium text-gray-400">当前阶段判断</span>
                 </div>
-                <span className="text-xs font-medium text-gray-400">当前阶段判断</span>
+                <p className="text-sm font-semibold text-gray-900">{result.stage}</p>
               </div>
-              <p className="text-sm font-semibold text-gray-900">{result.stage}</p>
-            </div>
 
-            {/* Suggestion */}
-            <div>
-              <div className="flex items-center gap-2 mb-1.5">
-                <div className="w-6 h-6 rounded-lg bg-green-100 flex items-center justify-center">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#16a34a" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M9 11l3 3L22 4" />
-                    <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
-                  </svg>
+              {/* Suggestion */}
+              <div>
+                <div className="flex items-center gap-2 mb-1.5">
+                  <div className="w-6 h-6 rounded-lg bg-green-100 flex items-center justify-center">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#16a34a" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M9 11l3 3L22 4" />
+                      <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
+                    </svg>
+                  </div>
+                  <span className="text-xs font-medium text-gray-400">下一步建议</span>
                 </div>
-                <span className="text-xs font-medium text-gray-400">下一步建议</span>
+                <p className="text-sm text-gray-700 leading-relaxed">{result.suggestion}</p>
               </div>
-              <p className="text-sm text-gray-700 leading-relaxed">{result.suggestion}</p>
-            </div>
 
-            {/* Notes */}
-            <div className="rounded-lg bg-amber-50 p-3">
-              <div className="flex items-center gap-2 mb-1.5">
-                <div className="w-6 h-6 rounded-lg bg-amber-100 flex items-center justify-center">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#d97706" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
-                    <path d="M12 9v4M12 17h.01" />
-                  </svg>
+              {/* Notes */}
+              <div className="rounded-lg bg-amber-50 p-3">
+                <div className="flex items-center gap-2 mb-1.5">
+                  <div className="w-6 h-6 rounded-lg bg-amber-100 flex items-center justify-center">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#d97706" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
+                      <path d="M12 9v4M12 17h.01" />
+                    </svg>
+                  </div>
+                  <span className="text-xs font-medium text-amber-700">注意事项</span>
                 </div>
-                <span className="text-xs font-medium text-amber-700">注意事项</span>
+                <p className="text-sm text-amber-700 leading-relaxed">{result.notes}</p>
               </div>
-              <p className="text-sm text-amber-700 leading-relaxed">{result.notes}</p>
-            </div>
-          </div>
+            </PressableCard>
+          </AnimatedCard>
 
           {/* Ask another */}
-          <button
-            onClick={() => {
-              setResult(null);
-              setQuestion('');
-              setSubmittedQuestion('');
-            }}
-            className="btn-ghost w-full"
-          >
-            再问一个问题
-          </button>
-        </div>
+          <AnimatedCard>
+            <button
+              onClick={() => {
+                setResult(null);
+                setQuestion('');
+                setSubmittedQuestion('');
+              }}
+              className="btn-ghost w-full"
+            >
+              再问一个问题
+            </button>
+          </AnimatedCard>
+        </AnimatedList>
       )}
 
       {/* Bottom navigation */}

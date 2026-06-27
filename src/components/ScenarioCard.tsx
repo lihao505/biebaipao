@@ -4,6 +4,7 @@ import type { Scenario } from '../types';
 import { getTaskTemplate } from '../data/taskTemplates';
 import { useApp } from '../context/AppContext';
 import { cn } from '../lib/cn';
+import PressableCard from '../components/PressableCard';
 
 const cardTones = [
   'from-[#eaf3ff] to-white',
@@ -36,7 +37,7 @@ export default function ScenarioCard({ scenario }: { scenario: Scenario }) {
   };
 
   return (
-    <div
+    <PressableCard
       className={cn(
         'lift-card relative w-full overflow-hidden rounded-[26px] border border-white/80 bg-gradient-to-br p-4 shadow-[0_16px_42px_rgba(29,29,31,0.08)] transition-all',
         cardTones[toneIndex]
@@ -88,6 +89,6 @@ export default function ScenarioCard({ scenario }: { scenario: Scenario }) {
           </button>
         </div>
       </div>
-    </div>
+    </PressableCard>
   );
 }
