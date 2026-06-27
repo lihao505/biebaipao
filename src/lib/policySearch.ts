@@ -148,8 +148,8 @@ const demoPolicyDB: Record<string, PolicySearchResult> = {
     ],
     sources: [
       {
-        title: '银保监会 - 银行业务指南',
-        url: 'https://www.cbirc.gov.cn/',
+        title: '国家金融监督管理总局 - 银行业务指南',
+        url: 'https://www.nfra.gov.cn/',
         sourceName: '国家金融监督管理总局',
         publishedAt: '2024-08-01',
         snippet: '银行业金融机构应提供便捷服务，部分业务可通过线上渠道办理。',

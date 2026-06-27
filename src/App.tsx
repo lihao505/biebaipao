@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
-import { AnimatePresence } from 'motion/react';
 import ScrollToTop from './components/ScrollToTop';
 import AnimatedRoutes from './components/AnimatedRoutes';
 import { ReducedMotionContext } from './lib/motion';
@@ -22,36 +21,34 @@ import NextStepPage from './pages/NextStepPage';
 function AppRoutes() {
   const location = useLocation();
   return (
-    <AnimatePresence mode="wait">
-      <AnimatedRoutes>
-        <Routes location={location}>
-          {/* Core pages */}
-          <Route path="/" element={<HomePage />} />
-          <Route path="/scenarios" element={<ScenarioSelectPage />} />
-          <Route path="/history" element={<HistoryPage />} />
-          <Route path="/profile" element={<ProfilePage />} />
-          <Route path="/coach" element={<CoachPage />} />
-          <Route path="/coach/:scenarioId" element={<CoachPage />} />
+    <AnimatedRoutes>
+      <Routes location={location}>
+        {/* Core pages */}
+        <Route path="/" element={<HomePage />} />
+        <Route path="/scenarios" element={<ScenarioSelectPage />} />
+        <Route path="/history" element={<HistoryPage />} />
+        <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/coach" element={<CoachPage />} />
+        <Route path="/coach/:scenarioId" element={<CoachPage />} />
 
-          {/* Task-based pages (new flow) */}
-          <Route path="/task/:taskId" element={<TaskDetailPage />} />
-          <Route path="/next-step/:taskId" element={<NextStepPage />} />
-          <Route path="/tutorial/:taskId" element={<TutorialPage />} />
-          <Route path="/tutorial/:taskId/:materialId" element={<TutorialPage />} />
+        {/* Task-based pages (new flow) */}
+        <Route path="/task/:taskId" element={<TaskDetailPage />} />
+        <Route path="/next-step/:taskId" element={<NextStepPage />} />
+        <Route path="/tutorial/:taskId" element={<TutorialPage />} />
+        <Route path="/tutorial/:taskId/:materialId" element={<TutorialPage />} />
 
-          {/* Legacy scenario-based pages (still functional) */}
-          <Route path="/guide/:scenarioId" element={<BeginnerGuidePage />} />
-          <Route path="/materials/:scenarioId" element={<MaterialListPage />} />
-          <Route path="/material-guide/:scenarioId/:materialId" element={<MaterialGuidePage />} />
-          <Route path="/process/:scenarioId" element={<ProcessFlowPage />} />
-          <Route path="/official/:scenarioId" element={<OfficialInfoPage />} />
-          <Route path="/onsite/:scenarioId" element={<OnsiteAskPage />} />
+        {/* Legacy scenario-based pages (still functional) */}
+        <Route path="/guide/:scenarioId" element={<BeginnerGuidePage />} />
+        <Route path="/materials/:scenarioId" element={<MaterialListPage />} />
+        <Route path="/material-guide/:scenarioId/:materialId" element={<MaterialGuidePage />} />
+        <Route path="/process/:scenarioId" element={<ProcessFlowPage />} />
+        <Route path="/official/:scenarioId" element={<OfficialInfoPage />} />
+        <Route path="/onsite/:scenarioId" element={<OnsiteAskPage />} />
 
-          {/* Fallback */}
-          <Route path="*" element={<Navigate to="/" replace />} />
-        </Routes>
-      </AnimatedRoutes>
-    </AnimatePresence>
+        {/* Fallback */}
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+    </AnimatedRoutes>
   );
 }
 
