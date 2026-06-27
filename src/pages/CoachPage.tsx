@@ -524,7 +524,7 @@ export default function CoachPage() {
       <div
         ref={scrollRef}
         className="no-scrollbar space-y-4 overflow-y-auto pb-4"
-        style={{ height: isMaterialTeaching ? 'calc(100vh - 680px)' : 'calc(100vh - 520px)', minHeight: '120px' }}
+        style={{ height: isMaterialTeaching ? 'calc(100vh - 680px)' : 'calc(100vh - 460px)', minHeight: '180px' }}
       >
         {/* Quick questions as a "你可以问" card inside chat */}
         {showQuickQuestions && (
